@@ -87,6 +87,8 @@ html {
     border-radius: 5px;
     background-color: var(--screen);
     text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 .screen-current{
     min-height: 64px;

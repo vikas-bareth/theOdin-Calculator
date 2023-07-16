@@ -78,9 +78,27 @@ function evaluate(){
   lastOperationScreen.textContent = `${firstOperand} ${currentOperation} ${secondOperand} =`
   currentOperation = null
 }
+function handleKeyboardInput(e){
+  if (e.key >= 0 && e.key <= 9) appendNumber(e.key)
+  if(e.key === '.') appendPoint()
+  if (e.key === '=' || e.key === 'Enter') evaluate()
+  if (e.key === 'Backspace') removeNumber(currentOperationScreen.textContent)
+  if (e.key === 'Escape') clear()
+  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/'){
+    setOperation(convertOperator(e.key))
+  }
+}
+function convertOperator(keyboardOperator){
+  if(keyboardOperator === '+') return '+'
+  if (keyboardOperator === '/') return '÷'
+  if (keyboardOperator === '*') return '×'
+  if (keyboardOperator === '-') return '−'
+}
 
 
 //****buttons Action */
+window.addEventListener('keydown', handleKeyboardInput)
+
 numberButtons.forEach((button) => {
   button.addEventListener('click', () => appendNumber(button.textContent))
 })
