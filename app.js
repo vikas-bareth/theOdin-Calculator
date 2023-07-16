@@ -67,7 +67,7 @@ function setOperation(operator){
 
 function evaluate(){
   if(currentOperation === null || shouldResetScreen) return;
-  if(currentOperation === '÷' && currentOperation.textContent === '0'){
+  if(currentOperation === '÷' && currentOperationScreen.textContent === '0'){
     alert("You can't divide by 0!")
     return;
   }
@@ -115,16 +115,17 @@ function operate(operator,a,b){
     a = Number(a);
     b = Number(b);
     switch (operator) {
-        case '+':
-          return add(a, b)
-        case '-':
-          return substract(a, b)
-        case '*':
-          return multiply(a, b)
-        case '/':
-          if (b === 0) return null
-          else return divide(a, b)
-        default:
-          return null
-      }
+      case '+':
+        return add(a, b)
+      case '−':
+        return subtract(a, b)
+      case '×':
+        return multiply(a, b)
+      case '÷':
+        if (b === 0) return null
+        else return divide(a, b)
+      default:
+        return null
+    }
+  
 }
